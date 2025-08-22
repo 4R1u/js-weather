@@ -11,5 +11,13 @@ const weatherFetcher = (function () {
             .then(function (response) { console.log(response); });
     };
 
-    return { today, };
+    const hourly = function (location) {
+        fetch(mainUrl(location, "metric", "/next24hours", "datetime%2Ctemp%2Cfeelslike%2Chumidity%2Cprecipprob%2Ccloudcover%2Cuvindex%2Cconditions%2Cdescription%2Cicon", "hours"), { mode: "cors" })
+            .then(function (response) { return response.json(); })
+            .then(function (response) { console.log(response); });
+    };
+
+    return { today, hourly, };
 })();
+
+weatherFetcher.hourly("Lahore");
