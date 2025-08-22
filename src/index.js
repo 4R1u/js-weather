@@ -18,17 +18,22 @@ const weatherFetcher = (function () {
     };
 
     const tenday = function (location) {
-        fetch(mainUrl(location, "metric", "/next10days", "datetime%2Ctemp%2Chumidity%2Cprecipprob%2Cwindspeed%2Cwinddir%2Ccloudcover%2Cvisibility%2Cuvindex%2Csunrise%2Csunset%2Cmoonphase%2Cconditions%2Cdescription%2Cicon", "days"), { mode: "cors" })
+        fetch(mainUrl(location, "metric", "/next10days", "datetimetempmax%Ctempmin%2Ctemp%2Chumidity%2Cprecipprob%2Cwindspeed%2Cwinddir%2Ccloudcover%2Cvisibility%2Cuvindex%2Csunrise%2Csunset%2Cmoonphase%2Cconditions%2Cdescription%2Cicon", "days"), { mode: "cors" })
             .then(function (response) { return response.json(); })
             .then(function (response) { console.log(response); });
     };
+
     const weekend = function (location) {
-        fetch(mainUrl(location, "metric", "/next14days", "datetime%2Ctemp%2Chumidity%2Cprecipprob%2Cwindspeed%2Cwinddir%2Ccloudcover%2Cvisibility%2Cuvindex%2Csunrise%2Csunset%2Cmoonphase%2Cconditions%2Cdescription%2Cicon", "days"), { mode: "cors" })
+        fetch(mainUrl(location, "metric", "/next14days", "datetimetempmax%Ctempmin%2Ctemp%2Chumidity%2Cprecipprob%2Cwindspeed%2Cwinddir%2Ccloudcover%2Cvisibility%2Cuvindex%2Csunrise%2Csunset%2Cmoonphase%2Cconditions%2Cdescription%2Cicon", "days"), { mode: "cors" })
             .then(function (response) { return response.json(); })
             .then(function (response) { console.log(response); });
     };
 
-    return { today, hourly, tenday, weekend, };
-})();
+    const monthly = function (location) {
+        fetch(mainUrl(location, "metric", "/last38days/next38days", "datetime%2Ctempmax%2Ctempmin%2Cprecipprob%2Cwindspeed%2Cwinddir%2Csunrise%2Csunset%2Cmoonphase%2Cconditions%2Cdescription%2Cicon", "days"), { mode: "cors" })
+            .then(function (response) { return response.json(); })
+            .then(function (response) { console.log(response); });
+    };
 
-weatherFetcher.weekend("Lahore");
+    return { today, hourly, tenday, weekend, monthly };
+})();
