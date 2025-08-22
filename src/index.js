@@ -22,8 +22,13 @@ const weatherFetcher = (function () {
             .then(function (response) { return response.json(); })
             .then(function (response) { console.log(response); });
     };
+    const weekend = function (location) {
+        fetch(mainUrl(location, "metric", "/next14days", "datetime%2Ctemp%2Chumidity%2Cprecipprob%2Cwindspeed%2Cwinddir%2Ccloudcover%2Cvisibility%2Cuvindex%2Csunrise%2Csunset%2Cmoonphase%2Cconditions%2Cdescription%2Cicon", "days"), { mode: "cors" })
+            .then(function (response) { return response.json(); })
+            .then(function (response) { console.log(response); });
+    };
 
-    return { today, hourly, tenday, };
+    return { today, hourly, tenday, weekend, };
 })();
 
-weatherFetcher.tenday("Lahore");
+weatherFetcher.weekend("Lahore");
