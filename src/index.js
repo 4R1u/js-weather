@@ -38,6 +38,14 @@ const weatherFetcher = (function () {
     return { today, hourly, tenday, weekend, monthly };
 })();
 
-weatherFetcher.today("Lahore")
-    .then(console.log);
+const displayController = (function (doc) {
+    const loadSearchedLocation = function (event) {
+        event.preventDefault();
+        weatherFetcher.today(doc.querySelector("#location").value)
+            .then(console.log);
+    }
 
+    doc.querySelector("form button").addEventListener("click", loadSearchedLocation);
+
+    return {};
+})(document);
