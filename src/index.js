@@ -69,17 +69,50 @@ const displayController = (function (doc) {
         </div>
 
         <div class="today-body">
-          <div class="today-body-high-and-low">High/Low ${result["days"][0]["tempmax"]}°/${result["days"][0]["tempmin"]}°</div>
-          <div class="feelslike">Feels Like ${result["days"][0]["feelslike"]}</div>
-          <div class="sunrise">Sunrise ${result["days"][0]["sunrise"]}</div>
-          <div class="sunset">Sunset ${result["days"][0]["sunset"]}</div>
-          <div class="wind">Wind: ${result["days"][0]["windspeed"]} km/h at ${result["days"][0]["winddir"]}</div>
-          <div class="humiditiy">Humidity: ${result["days"][0]["humidity"]}%</div>
-          <div class="dew-point">Dew point: ${result["days"][0]["dew"]}</div>
-          <div class="pressure">Pressure: ${result["days"][0]["pressure"]}</div>
-          <div class="uv-index">UV Index: ${result["days"][0]["uvindex"]}</div>
-          <div class="visibility">Visibility: ${result["days"][0]["visibility"]}</div>
-          <div class="moonphase">Moon Phase: ${result["days"][0]["moonphase"]}</div>
+          <div class="today-body-high-and-low">
+              <span>High/Low</span>
+              <span>${result["days"][0]["tempmax"]}°/${result["days"][0]["tempmin"]}°</span>
+          </div>
+          <div class="feelslike">
+              <span>Feels Like</span>
+              <span>${result["days"][0]["feelslike"]}</span>
+          </div>
+          <div class="sunrise">
+              <span>Sunrise</span>
+              <span>${result["days"][0]["sunrise"]}</span>
+          </div>
+          <div class="sunset">
+              <span>Sunset</span>
+              <span>${result["days"][0]["sunset"]}</span>
+          </div>
+          <div class="wind">
+              <span>Wind</span>
+              <span>${result["days"][0]["windspeed"]} at ${result["days"][0]["winddir"]}</span>
+          </div>
+          <div class="humiditiy">
+              <span>Humidity</span>
+              <span>${result["days"][0]["humidity"]}%</span>
+          </div>
+          <div class="dew-point">
+              <span>Dew point</span>
+              <span>${result["days"][0]["dew"]}</span>
+          </div>
+          <div class="pressure">
+              <span>Pressure</span>
+              <span>${result["days"][0]["pressure"]}</span>
+          </div>
+          <div class="uv-index">
+              <span>UV Index</span>
+              <span>${result["days"][0]["uvindex"]}</span>
+          </div>
+          <div class="visibility">
+              <span>Visibility</span>
+              <span>${result["days"][0]["visibility"]}</span>
+          </div>
+          <div class="moonphase">
+              <span>Moon Phase</span>
+              <span>${result["days"][0]["moonphase"]}</span>
+          </div>
         </div>`;
         import(`./icons/${result["days"][0]["icon"]}.png`)
             .then((result) => { doc.querySelector(".icon").src = result.default; });

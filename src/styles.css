@@ -31,3 +31,8 @@ body {
 .today-header-high-and-low {
     font-size: 1.5em;
 }
+
+.today-body>div {
+    display: flex;
+    justify-content: space-between;
+}
