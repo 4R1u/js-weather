@@ -54,23 +54,25 @@ const displayController = (function (doc) {
         const result = await weatherFetcher.today(doc.querySelector("#location").value);
         console.log(result);
         doc.querySelector(".body").innerHTML = `
-        <div class="icon">${result["days"][0]["icon"]}</div>
-        <div class="address">${result["resolvedAddress"]}<div>
-        <div class="temp">${result["days"][0]["temp"]}<div>
-        <div class="conditions">${result["days"][0]["conditions"]}<div>
-        <div class="high">High ${result["days"][0]["tempmax"]}<div>
-        <div class="low">Low ${result["days"][0]["tempmin"]}<div>
-        <div class="feelslike">Feels Like ${result["days"][0]["feelslike"]}<div>
-        <div class="sunrise">Sunrise ${result["days"][0]["sunrise"]}<div>
-        <div class="sunset">Sunset ${result["days"][0]["sunset"]}<div>
-        <div class="wind">Wind: ${result["days"][0]["windspeed"]} km/h at ${result["days"][0]["winddir"]}<div>
-        <div class="humiditiy">Humidity: ${result["days"][0]["humidity"]}%<div>
-        <div class="dew-point">Dew point: ${result["days"][0]["dew"]}<div>
-        <div class="pressure">Pressure: ${result["days"][0]["pressure"]}<div>
-        <div class="uv-index">UV Index: ${result["days"][0]["uvindex"]}<div>
-        <div class="visibility">Visibility: ${result["days"][0]["visibility"]}<div>
-        <div class="moonphase">Moon Phase: ${result["days"][0]["moonphase"]}<div>
+        <div class="address">${result["resolvedAddress"]}</div>
+        <img class="icon">
+        <div class="temp">${result["days"][0]["temp"]}</div>
+        <div class="conditions">${result["days"][0]["conditions"]}</div>
+        <div class="high">High ${result["days"][0]["tempmax"]}</div>
+        <div class="low">Low ${result["days"][0]["tempmin"]}</div>
+        <div class="feelslike">Feels Like ${result["days"][0]["feelslike"]}</div>
+        <div class="sunrise">Sunrise ${result["days"][0]["sunrise"]}</div>
+        <div class="sunset">Sunset ${result["days"][0]["sunset"]}</div>
+        <div class="wind">Wind: ${result["days"][0]["windspeed"]} km/h at ${result["days"][0]["winddir"]}</div>
+        <div class="humiditiy">Humidity: ${result["days"][0]["humidity"]}%</div>
+        <div class="dew-point">Dew point: ${result["days"][0]["dew"]}</div>
+        <div class="pressure">Pressure: ${result["days"][0]["pressure"]}</div>
+        <div class="uv-index">UV Index: ${result["days"][0]["uvindex"]}</div>
+        <div class="visibility">Visibility: ${result["days"][0]["visibility"]}</div>
+        <div class="moonphase">Moon Phase: ${result["days"][0]["moonphase"]}</div>
         `;
+        import(`./icons/${result["days"][0]["icon"]}.png`)
+            .then((result) => { doc.querySelector(".icon").src = result.default; });
     }
 
     doc.querySelector("form button").addEventListener("click", loadSearchedLocation);
