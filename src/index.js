@@ -57,16 +57,17 @@ const displayController = (function (doc) {
         <div class="today-header">
           <div class="address">${result["resolvedAddress"]}</div>
           <div class="today-header-temp-and-icon">
-            <div class="temp">${result["days"][0]["temp"]}°</div>
+            <span class="temp">${result["days"][0]["temp"]}°</span>
             <img class="icon">
           </div>
-          <div class="conditions">${result["days"][0]["conditions"]}</div>
+          <div class="conditions">${result["days"][0]["conditions"]}°</div>
           <div class="today-header-high-and-low">
-            <div class="high">High ${result["days"][0]["tempmax"]}</div>
-            <div class="high-low-dot">•</div>
-            <div class="low">Low ${result["days"][0]["tempmin"]}</div>
+            <span class="high">High ${result["days"][0]["tempmax"]}°</span>
+            <span class="high-low-dot">•</span>
+            <span class="low">Low ${result["days"][0]["tempmin"]}°</span>
           </div>
         </div>
+
         <div class="today-body">
           <div class="feelslike">Feels Like ${result["days"][0]["feelslike"]}</div>
           <div class="sunrise">Sunrise ${result["days"][0]["sunrise"]}</div>
@@ -78,8 +79,7 @@ const displayController = (function (doc) {
           <div class="uv-index">UV Index: ${result["days"][0]["uvindex"]}</div>
           <div class="visibility">Visibility: ${result["days"][0]["visibility"]}</div>
           <div class="moonphase">Moon Phase: ${result["days"][0]["moonphase"]}</div>
-        </div>
-        `;
+        </div>`;
         import(`./icons/${result["days"][0]["icon"]}.png`)
             .then((result) => { doc.querySelector(".icon").src = result.default; });
     }
