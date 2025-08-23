@@ -18,19 +18,19 @@ const weatherFetcher = (function () {
     };
 
     const tenday = function (location) {
-        return fetch(mainUrl(location, "metric", "/next10days", "datetimetempmax%Ctempmin%2Ctemp%2Chumidity%2Cprecipprob%2Cwindspeed%2Cwinddir%2Ccloudcover%2Cvisibility%2Cuvindex%2Csunrise%2Csunset%2Cmoonphase%2Cconditions%2Cdescription%2Cicon", "days"), { mode: "cors" })
+        return fetch(mainUrl(location, "metric", "/next10days", "datetime%2Ctempmax%Ctempmin%2Ctemp%2Chumidity%2Cprecipprob%2Cwindspeed%2Cwinddir%2Ccloudcover%2Cvisibility%2Cuvindex%2Csunrise%2Csunset%2Cmoonphase%2Cconditions%2Cdescription%2Cicon", "days"), { mode: "cors" })
             .then(function (response) { return response.json(); })
             .then(function (response) { return response; });
     };
 
     const weekend = function (location) {
-        return fetch(mainUrl(location, "metric", "/next14days", "datetimetempmax%Ctempmin%2Ctemp%2Chumidity%2Cprecipprob%2Cwindspeed%2Cwinddir%2Ccloudcover%2Cvisibility%2Cuvindex%2Csunrise%2Csunset%2Cmoonphase%2Cconditions%2Cdescription%2Cicon", "days"), { mode: "cors" })
+        return fetch(mainUrl(location, "metric", "/next14days", "datetime%2Ctempmax%Ctempmin%2Ctemp%2Chumidity%2Cprecipprob%2Cwindspeed%2Cwinddir%2Ccloudcover%2Cvisibility%2Cuvindex%2Csunrise%2Csunset%2Cmoonphase%2Cconditions%2Cdescription%2Cicon", "days"), { mode: "cors" })
             .then(function (response) { return response.json(); })
             .then(function (response) { return response; });
     };
 
     const monthly = function (location) {
-        return fetch(mainUrl(location, "metric", "/last38days/next38days", "datetime%2Ctempmax%2Ctempmin%2Cprecipprob%2Cwindspeed%2Cwinddir%2Csunrise%2Csunset%2Cmoonphase%2Cconditions%2Cdescription%2Cicon", "days"), { mode: "cors" })
+        return fetch(mainUrl(location, "metric", "/last38days/next38days", "datetime%2Ctempmax%2Ctempmin%2Ctemp%2Cprecipprob%2Cwindspeed%2Cwinddir%2Csunrise%2Csunset%2Cmoonphase%2Cconditions%2Cdescription%2Cicon", "days"), { mode: "cors" })
             .then(function (response) { return response.json(); })
             .then(function (response) { return response; });
     };
@@ -39,13 +39,23 @@ const weatherFetcher = (function () {
 })();
 
 const displayController = (function (doc) {
+    let mode = weatherFetcher.today;
+
     const loadSearchedLocation = function (event) {
         event.preventDefault();
-        weatherFetcher.today(doc.querySelector("#location").value)
-            .then(console.log);
+        mode(doc.querySelector("#location").value)
+            .then(function (result) {
+                doc.querySelector(".temp").textContent = result["days"][0]["temp"];
+            });
     }
 
     doc.querySelector("form button").addEventListener("click", loadSearchedLocation);
+
+    doc.querySelector(".header-tab-today").addEventListener("click", () => { mode = weatherFetcher.today });
+    doc.querySelector(".header-tab-hourly").addEventListener("click", () => { mode = weatherFetcher.hourly });
+    doc.querySelector(".header-tab-tenday").addEventListener("click", () => { mode = weatherFetcher.tenday });
+    doc.querySelector(".header-tab-weekend").addEventListener("click", () => { mode = weatherFetcher.weekend });
+    doc.querySelector(".header-tab-monthly").addEventListener("click", () => { mode = weatherFetcher.monthly });
 
     return {};
 })(document);

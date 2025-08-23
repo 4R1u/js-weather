@@ -8,10 +8,25 @@
 </head>
 
 <body>
-    <form>
-        <input type="search" name="location" id="location">
-        <button type="submit">Go</button>
-    </form>
+    <div class="header">
+        <div class="header-top">
+            <form>
+                <input type="search" name="location" id="location">
+                <button type="submit">Go</button>
+            </form>
+        </div>
+        <div class="header-bottom">
+            <button type="button" class="header-tab header-tab-today">Today</button>
+            <button type="button" class="header-tab header-tab-hourly">Hourly</button>
+            <button type="button" class="header-tab header-tab-tenday">Tenday</button>
+            <button type="button" class="header-tab header-tab-weekend">Weekend</button>
+            <button type="button" class="header-tab header-tab-monthly">Monthly</button>
+        </div>
+    </div>
+
+    <div class="body">
+        <div class="temp"></div>
+    </div>
 </body>
 
 </html>
