@@ -95,7 +95,7 @@ const displayController = (function (doc) {
           </div>
           <div class="dew-point">
               <span>Dew point</span>
-              <span>${result["days"][0]["dew"]}</span>
+              <span>${result["days"][0]["dew"]}°</span>
           </div>
           <div class="pressure">
               <span>Pressure</span>
