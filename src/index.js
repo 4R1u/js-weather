@@ -60,7 +60,7 @@ const displayController = (function (doc) {
             <span class="temp">${result["days"][0]["temp"]}°</span>
             <img class="icon">
           </div>
-          <div class="conditions">${result["days"][0]["conditions"]}°</div>
+          <div class="conditions">${result["days"][0]["conditions"]}</div>
           <div class="today-header-high-and-low">
             <span class="high">High ${result["days"][0]["tempmax"]}°</span>
             <span class="high-low-dot">•</span>
