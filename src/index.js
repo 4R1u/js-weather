@@ -69,6 +69,7 @@ const displayController = (function (doc) {
         </div>
 
         <div class="today-body">
+          <div class="today-body-high-and-low">High/Low ${result["days"][0]["tempmax"]}°/${result["days"][0]["tempmin"]}°</div>
           <div class="feelslike">Feels Like ${result["days"][0]["feelslike"]}</div>
           <div class="sunrise">Sunrise ${result["days"][0]["sunrise"]}</div>
           <div class="sunset">Sunset ${result["days"][0]["sunset"]}</div>
