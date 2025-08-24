@@ -77,4 +77,15 @@ body {
 
 .hourly-forecast {
     display: inline-block;
+    background-color: whitesmoke;
+    margin: 5px;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.hourly-temp {
+    font-size: 1.5em;
 }
