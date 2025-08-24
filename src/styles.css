@@ -10,10 +10,18 @@ body {
     border-radius: 5px;
     background-color: white;
     margin: 5px;
+    box-sizing: border-box;
+    padding: 10px;
 }
 
 .today-header {
     overflow: hidden;
+}
+
+.today-body-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
 }
 
 .today-header-temp-and-icon {
@@ -36,7 +44,22 @@ body {
     font-size: 1.5em;
 }
 
-.today-body>div {
+.today-grid-item {
     display: flex;
     justify-content: space-between;
+}
+
+.feelslike-and-sunrise-and-sunset {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 20px;
+}
+
+.sunrise-and-sunset {
+}
+
+.feelslike>div:last-child {
+    font-size: 3.5em;
+    font-weight: bold;
 }
