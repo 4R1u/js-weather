@@ -12,6 +12,10 @@ body {
     margin: 5px;
 }
 
+.today-header {
+    overflow: hidden;
+}
+
 .today-header-temp-and-icon {
     display: flex;
     align-items: center;
