@@ -72,7 +72,7 @@ const displayController = (function (doc) {
           <div class="feelslike-and-sunrise-and-sunset">
             <div class="feelslike">
               <div>Feels Like</div>
-              <div>${result["days"][0]["feelslike"]}</div>
+              <div>${result["days"][0]["feelslike"]}°</div>
             </div>
             <div class="sunrise-and-sunset">
               <div class="sunrise">
