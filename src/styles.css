@@ -21,7 +21,6 @@ body {
 .today-body-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 10px;
 }
 
 .today-header-temp-and-icon {
@@ -47,6 +46,13 @@ body {
 .today-grid-item {
     display: flex;
     justify-content: space-between;
+    border-bottom: 1px solid black;
+    padding: 10px;
+}
+
+.today-grid-item:nth-last-child(2),
+.today-grid-item:last-child {
+    border-bottom: none;
 }
 
 .feelslike-and-sunrise-and-sunset {
@@ -54,9 +60,6 @@ body {
     justify-content: space-between;
     align-items: flex-end;
     margin-bottom: 20px;
-}
-
-.sunrise-and-sunset {
 }
 
 .feelslike>div:last-child {
