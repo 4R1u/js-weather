@@ -6,7 +6,7 @@ const weatherFetcher = (function () {
     };
 
     const today = function (location) {
-        return fetch(mainUrl(location, "metric", "/today", "tempmax%2Ctempmin%2Ctemp%2Cfeelslike%2Cdew%2Chumidity%2Cprecipprob%2Cwindspeed%2Cwinddir%2Cpressure%2Ccloudcover%2Cvisibility%2Cuvindex%2Csunrise%2Csunset%2Cmoonphase%2Cconditions%2Cdescription%2Cicon", "days%2Chours"), { mode: "cors" })
+        return fetch(mainUrl(location, "metric", "/next24hours", "datetime%2Ctempmax%2Ctempmin%2Ctemp%2Cfeelslike%2Cdew%2Chumidity%2Cprecipprob%2Cwindspeed%2Cwinddir%2Cpressure%2Ccloudcover%2Cvisibility%2Cuvindex%2Csunrise%2Csunset%2Cmoonphase%2Cconditions%2Cdescription%2Cicon", "hours"), { mode: "cors" })
             .then(function (response) { return response.json(); })
             .then(function (response) { return response; });
     };
@@ -19,8 +19,16 @@ const displayController = (function (doc) {
         event.preventDefault();
         const result = await weatherFetcher.today(doc.querySelector("#location").value);
         console.log(result);
+        const hours = [];
+        const date = new Date;
+        const currentHour = date.getHours();
+        const currentOffset = date.getTimezoneOffset() / 60;
+        for (let i = 0; i < 24; ++i) {
+            const thisHour = currentHour + i + currentOffset + result["tzoffset"];
+            hours.push(result["days"][thisHour < 24 ? 0 : 1]["hours"][thisHour < 24 ? thisHour : thisHour - 24]);
+        }
         doc.querySelector(".body").innerHTML = `
-        <div class="today-header">
+        <div class="card today-header">
           <div class="address">${result["resolvedAddress"]}</div>
           <div class="today-header-temp-and-icon">
             <span class="temp">${result["days"][0]["temp"]}°</span>
@@ -34,7 +42,7 @@ const displayController = (function (doc) {
           </div>
         </div>
 
-        <div class="today-body">
+        <div class="card today-body">
           <div class="feelslike-and-sunrise-and-sunset">
             <div class="feelslike">
               <div>Feels Like</div>
@@ -85,6 +93,33 @@ const displayController = (function (doc) {
                 <span>${result["days"][0]["moonphase"]}</span>
             </div>
           </div>
+        </div>
+        
+        <div class="card hourly-forecasts">
+          <div class="hourly-forecast">${hours[0]["temp"]}°</div>
+          <div class="hourly-forecast">${hours[1]["temp"]}°</div>
+          <div class="hourly-forecast">${hours[2]["temp"]}°</div>
+          <div class="hourly-forecast">${hours[3]["temp"]}°</div>
+          <div class="hourly-forecast">${hours[4]["temp"]}°</div>
+          <div class="hourly-forecast">${hours[5]["temp"]}°</div>
+          <div class="hourly-forecast">${hours[6]["temp"]}°</div>
+          <div class="hourly-forecast">${hours[7]["temp"]}°</div>
+          <div class="hourly-forecast">${hours[8]["temp"]}°</div>
+          <div class="hourly-forecast">${hours[9]["temp"]}°</div>
+          <div class="hourly-forecast">${hours[10]["temp"]}°</div>
+          <div class="hourly-forecast">${hours[11]["temp"]}°</div>
+          <div class="hourly-forecast">${hours[12]["temp"]}°</div>
+          <div class="hourly-forecast">${hours[13]["temp"]}°</div>
+          <div class="hourly-forecast">${hours[14]["temp"]}°</div>
+          <div class="hourly-forecast">${hours[15]["temp"]}°</div>
+          <div class="hourly-forecast">${hours[16]["temp"]}°</div>
+          <div class="hourly-forecast">${hours[17]["temp"]}°</div>
+          <div class="hourly-forecast">${hours[18]["temp"]}°</div>
+          <div class="hourly-forecast">${hours[19]["temp"]}°</div>
+          <div class="hourly-forecast">${hours[20]["temp"]}°</div>
+          <div class="hourly-forecast">${hours[21]["temp"]}°</div>
+          <div class="hourly-forecast">${hours[22]["temp"]}°</div>
+          <div class="hourly-forecast">${hours[23]["temp"]}°</div>
         </div>`;
         import(`./icons/${result["days"][0]["icon"]}.png`)
             .then((result) => { doc.querySelector(".icon").src = result.default; });

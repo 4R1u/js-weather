@@ -4,8 +4,7 @@ body {
         "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
-.today-header,
-.today-body {
+.card {
     width: 50vw;
     border-radius: 5px;
     background-color: white;
@@ -68,4 +67,14 @@ body {
 .feelslike>div:last-child {
     font-size: 3.5em;
     font-weight: bold;
+}
+
+.hourly-forecasts {
+    white-space: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+.hourly-forecast {
+    display: inline-block;
 }
