@@ -241,8 +241,14 @@ const displayController = (function (doc) {
             <div class="hourly-humidity">${Math.round(Number(hours[23]["humidity"]))}%</div>
           </div>
         </div>`;
+
         import(`./icons/${result["days"][0]["icon"]}.png`)
             .then((result) => { doc.querySelector(".icon").src = result.default; });
+
+        for (let i = 0; i < 24; ++i) {
+            import(`./icons/${hours[i]["icon"]}.png`)
+                .then((result) => { doc.querySelector(`.hourly-forecast:nth-child(${i + 1}) .hourly-icon`).src = result.default; });
+        }
     }
 
     doc.querySelector("form button").addEventListener("click", loadSearchedLocation);
