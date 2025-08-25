@@ -1,5 +1,46 @@
 import "./styles.css";
 
+const unitHelper = (function () {
+  let currentUnitSystem = "metric";
+  const allUnits = {
+    "us": {
+      "temp": "°F",
+      "speed": "mph",
+      "distance": "mi",
+      "pressure": "mb"
+    },
+    "metric": {
+      "temp": "°C",
+      "speed": "km/h",
+      "distance": "km",
+      "pressure": "mb"
+    },
+    "uk": {
+      "temp": "°C",
+      "speed": "mph",
+      "distance": "mi",
+      "pressure": "mb"
+    },
+    "base": {
+      "temp": "K",
+      "speed": "m/s",
+      "distance": "km",
+      "pressure": "mb"
+    },
+  };
+
+  const changeUnits = function (target) {
+    if (["us", "metric", "uk", "base"].includes(target))
+      currentUnitSystem = target;
+  };
+
+  const units = function (quantity) {
+    return allUnits[currentUnitSystem][quantity];
+  };
+
+  return { changeUnits, units };
+})();
+
 const weatherFetcher = (function () {
   const mainUrl = function (location, unitGroup = "metric", dates = "", elements = "", include = "") {
     return `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}${dates}?key=GYDSKL9BJ6CVEFMJ7E4YR7SRL&unitGroup=${unitGroup}&include=${include}&elements=${elements}&iconsSet=icons2`;
@@ -33,21 +74,21 @@ const displayController = (function (doc) {
     const days = result["days"];
 
     doc.querySelector(".address").textContent = result["resolvedAddress"];
-    doc.querySelector(".temp").textContent = `${days[0]["temp"]}°`;
+    doc.querySelector(".temp").textContent = `${days[0]["temp"]} ${unitHelper.units("temp")}`;
     doc.querySelector(".conditions").textContent = days[0]["conditions"];
-    doc.querySelector(".high").textContent = `${days[0]["tempmax"]}°`;
-    doc.querySelector(".low").textContent = `${days[0]["tempmin"]}°`;
+    doc.querySelector(".high").textContent = `${days[0]["tempmax"]} ${unitHelper.units("temp")}`;
+    doc.querySelector(".low").textContent = `${days[0]["tempmin"]} ${unitHelper.units("temp")}`;
 
-    doc.querySelector(".feelslike div:last-child").textContent = `${days[0]["feelslike"]}°`;
+    doc.querySelector(".feelslike div:last-child").textContent = `${days[0]["feelslike"]} ${unitHelper.units("temp")}`;
     doc.querySelector(".sunrise span:last-child").textContent = `${days[0]["sunrise"]}`;
     doc.querySelector(".sunset span:last-child").textContent = `${days[0]["sunset"]}`;
-    doc.querySelector(".today-body-high-and-low span:last-child").textContent = `${days[0]["tempmax"]}°/${days[0]["tempmax"]}°`;
-    doc.querySelector(".wind span:last-child").textContent = `Dir: ${days[0]["winddir"]}, Vel: ${days[0]["windspeed"]}`;
+    doc.querySelector(".today-body-high-and-low span:last-child").textContent = `${days[0]["tempmax"]} ${unitHelper.units("temp")}/${days[0]["tempmax"]} ${unitHelper.units("temp")}`;
+    doc.querySelector(".wind span:last-child").textContent = `Dir: ${days[0]["winddir"]}, Vel: ${days[0]["windspeed"]} ${unitHelper.units("speed")}`;
     doc.querySelector(".humidity span:last-child").textContent = `${days[0]["humidity"]}%`;
-    doc.querySelector(".dew-point span:last-child").textContent = `${days[0]["dew"]}°`;
-    doc.querySelector(".pressure span:last-child").textContent = `${days[0]["pressure"]}`;
+    doc.querySelector(".dew-point span:last-child").textContent = `${days[0]["dew"]} ${unitHelper.units("temp")}`;
+    doc.querySelector(".pressure span:last-child").textContent = `${days[0]["pressure"]} ${unitHelper.units("pressure")}`;
     doc.querySelector(".uv-index span:last-child").textContent = `${days[0]["uvindex"]}`;
-    doc.querySelector(".visibility span:last-child").textContent = `${days[0]["visibility"]}`;
+    doc.querySelector(".visibility span:last-child").textContent = `${days[0]["visibility"]} ${unitHelper.units("distance")}`;
     doc.querySelector(".moonphase span:last-child").textContent = `${days[0]["moonphase"]}`;
 
     import(`./icons/${result["days"][0]["icon"]}.png`)
@@ -55,7 +96,7 @@ const displayController = (function (doc) {
 
     for (let i = 0; i < 24; ++i) {
       doc.querySelector(`.hourly-forecast:nth-child(${i + 1}) .hourly-hour`).textContent = hours[i]["datetime"].slice(0, 5);
-      doc.querySelector(`.hourly-forecast:nth-child(${i + 1}) .hourly-temp`).textContent = `${Math.round(hours[i]["temp"])}°`;
+      doc.querySelector(`.hourly-forecast:nth-child(${i + 1}) .hourly-temp`).textContent = `${Math.round(hours[i]["temp"])} ${unitHelper.units("temp")}`;
       doc.querySelector(`.hourly-forecast:nth-child(${i + 1}) .hourly-humidity`).textContent = `${Math.round(hours[i]["humidity"])}%`;
       import(`./icons/${hours[i]["icon"]}.png`)
         .then((result) => { doc.querySelector(`.hourly-forecast:nth-child(${i + 1}) .hourly-icon`).src = result.default; });
@@ -64,14 +105,14 @@ const displayController = (function (doc) {
     for (let i = 1; i <= 14; ++i) {
       doc.querySelector(`.daily-forecast:nth-child(${i}) span:first-child`).textContent = days[i]["datetime"].slice(5);
       doc.querySelector(`.daily-forecast:nth-child(${i}) span:last-child span:nth-child(2)`).textContent = `${Math.round(days[i]["humidity"])}%`;
-      doc.querySelector(`.daily-forecast:nth-child(${i}) span:last-child span:last-child span:first-child`).textContent = `${Math.round(days[i]["tempmax"])}°`;
-      doc.querySelector(`.daily-forecast:nth-child(${i}) span:last-child span:last-child span:last-child`).textContent = `${Math.round(days[i]["tempmin"])}°`;
+      doc.querySelector(`.daily-forecast:nth-child(${i}) span:last-child span:last-child span:first-child`).textContent = `${Math.round(days[i]["tempmax"])} ${unitHelper.units("temp")}`;
+      doc.querySelector(`.daily-forecast:nth-child(${i}) span:last-child span:last-child span:last-child`).textContent = `${Math.round(days[i]["tempmin"])} ${unitHelper.units("temp")}`;
       import(`./icons/${days[i]["icon"]}.png`)
         .then((result) => { doc.querySelector(`.daily-forecast:nth-child(${i}) img`).src = result.default; });
     }
 
     doc.querySelector(".body").classList.remove("hidden");
-  }
+  };
 
   doc.querySelector("form button").addEventListener("click", loadSearchedLocation);
 
