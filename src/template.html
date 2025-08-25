@@ -26,6 +26,8 @@
         </div>
     </div>
 
+    <div class="loading hidden">Loading...</div>
+
     <div class="body hidden">
         <div class="card today-header">
             <div class="address"></div>
@@ -95,47 +97,157 @@
         </div>
 
         <div class="card hourly-forecasts">
-            <div class="hourly-forecast"><div class="hourly-hour"></div><div class="hourly-temp"></div><img class="hourly-icon"><div class="hourly-humidity"></div></div>
-            <div class="hourly-forecast"><div class="hourly-hour"></div><div class="hourly-temp"></div><img class="hourly-icon"><div class="hourly-humidity"></div></div>
-            <div class="hourly-forecast"><div class="hourly-hour"></div><div class="hourly-temp"></div><img class="hourly-icon"><div class="hourly-humidity"></div></div>
-            <div class="hourly-forecast"><div class="hourly-hour"></div><div class="hourly-temp"></div><img class="hourly-icon"><div class="hourly-humidity"></div></div>
-            <div class="hourly-forecast"><div class="hourly-hour"></div><div class="hourly-temp"></div><img class="hourly-icon"><div class="hourly-humidity"></div></div>
-            <div class="hourly-forecast"><div class="hourly-hour"></div><div class="hourly-temp"></div><img class="hourly-icon"><div class="hourly-humidity"></div></div>
-            <div class="hourly-forecast"><div class="hourly-hour"></div><div class="hourly-temp"></div><img class="hourly-icon"><div class="hourly-humidity"></div></div>
-            <div class="hourly-forecast"><div class="hourly-hour"></div><div class="hourly-temp"></div><img class="hourly-icon"><div class="hourly-humidity"></div></div>
-            <div class="hourly-forecast"><div class="hourly-hour"></div><div class="hourly-temp"></div><img class="hourly-icon"><div class="hourly-humidity"></div></div>
-            <div class="hourly-forecast"><div class="hourly-hour"></div><div class="hourly-temp"></div><img class="hourly-icon"><div class="hourly-humidity"></div></div>
-            <div class="hourly-forecast"><div class="hourly-hour"></div><div class="hourly-temp"></div><img class="hourly-icon"><div class="hourly-humidity"></div></div>
-            <div class="hourly-forecast"><div class="hourly-hour"></div><div class="hourly-temp"></div><img class="hourly-icon"><div class="hourly-humidity"></div></div>
-            <div class="hourly-forecast"><div class="hourly-hour"></div><div class="hourly-temp"></div><img class="hourly-icon"><div class="hourly-humidity"></div></div>
-            <div class="hourly-forecast"><div class="hourly-hour"></div><div class="hourly-temp"></div><img class="hourly-icon"><div class="hourly-humidity"></div></div>
-            <div class="hourly-forecast"><div class="hourly-hour"></div><div class="hourly-temp"></div><img class="hourly-icon"><div class="hourly-humidity"></div></div>
-            <div class="hourly-forecast"><div class="hourly-hour"></div><div class="hourly-temp"></div><img class="hourly-icon"><div class="hourly-humidity"></div></div>
-            <div class="hourly-forecast"><div class="hourly-hour"></div><div class="hourly-temp"></div><img class="hourly-icon"><div class="hourly-humidity"></div></div>
-            <div class="hourly-forecast"><div class="hourly-hour"></div><div class="hourly-temp"></div><img class="hourly-icon"><div class="hourly-humidity"></div></div>
-            <div class="hourly-forecast"><div class="hourly-hour"></div><div class="hourly-temp"></div><img class="hourly-icon"><div class="hourly-humidity"></div></div>
-            <div class="hourly-forecast"><div class="hourly-hour"></div><div class="hourly-temp"></div><img class="hourly-icon"><div class="hourly-humidity"></div></div>
-            <div class="hourly-forecast"><div class="hourly-hour"></div><div class="hourly-temp"></div><img class="hourly-icon"><div class="hourly-humidity"></div></div>
-            <div class="hourly-forecast"><div class="hourly-hour"></div><div class="hourly-temp"></div><img class="hourly-icon"><div class="hourly-humidity"></div></div>
-            <div class="hourly-forecast"><div class="hourly-hour"></div><div class="hourly-temp"></div><img class="hourly-icon"><div class="hourly-humidity"></div></div>
-            <div class="hourly-forecast"><div class="hourly-hour"></div><div class="hourly-temp"></div><img class="hourly-icon"><div class="hourly-humidity"></div></div>
+            <div class="hourly-forecast">
+                <div class="hourly-hour"></div>
+                <div class="hourly-temp"></div><img class="hourly-icon">
+                <div class="hourly-humidity"></div>
+            </div>
+            <div class="hourly-forecast">
+                <div class="hourly-hour"></div>
+                <div class="hourly-temp"></div><img class="hourly-icon">
+                <div class="hourly-humidity"></div>
+            </div>
+            <div class="hourly-forecast">
+                <div class="hourly-hour"></div>
+                <div class="hourly-temp"></div><img class="hourly-icon">
+                <div class="hourly-humidity"></div>
+            </div>
+            <div class="hourly-forecast">
+                <div class="hourly-hour"></div>
+                <div class="hourly-temp"></div><img class="hourly-icon">
+                <div class="hourly-humidity"></div>
+            </div>
+            <div class="hourly-forecast">
+                <div class="hourly-hour"></div>
+                <div class="hourly-temp"></div><img class="hourly-icon">
+                <div class="hourly-humidity"></div>
+            </div>
+            <div class="hourly-forecast">
+                <div class="hourly-hour"></div>
+                <div class="hourly-temp"></div><img class="hourly-icon">
+                <div class="hourly-humidity"></div>
+            </div>
+            <div class="hourly-forecast">
+                <div class="hourly-hour"></div>
+                <div class="hourly-temp"></div><img class="hourly-icon">
+                <div class="hourly-humidity"></div>
+            </div>
+            <div class="hourly-forecast">
+                <div class="hourly-hour"></div>
+                <div class="hourly-temp"></div><img class="hourly-icon">
+                <div class="hourly-humidity"></div>
+            </div>
+            <div class="hourly-forecast">
+                <div class="hourly-hour"></div>
+                <div class="hourly-temp"></div><img class="hourly-icon">
+                <div class="hourly-humidity"></div>
+            </div>
+            <div class="hourly-forecast">
+                <div class="hourly-hour"></div>
+                <div class="hourly-temp"></div><img class="hourly-icon">
+                <div class="hourly-humidity"></div>
+            </div>
+            <div class="hourly-forecast">
+                <div class="hourly-hour"></div>
+                <div class="hourly-temp"></div><img class="hourly-icon">
+                <div class="hourly-humidity"></div>
+            </div>
+            <div class="hourly-forecast">
+                <div class="hourly-hour"></div>
+                <div class="hourly-temp"></div><img class="hourly-icon">
+                <div class="hourly-humidity"></div>
+            </div>
+            <div class="hourly-forecast">
+                <div class="hourly-hour"></div>
+                <div class="hourly-temp"></div><img class="hourly-icon">
+                <div class="hourly-humidity"></div>
+            </div>
+            <div class="hourly-forecast">
+                <div class="hourly-hour"></div>
+                <div class="hourly-temp"></div><img class="hourly-icon">
+                <div class="hourly-humidity"></div>
+            </div>
+            <div class="hourly-forecast">
+                <div class="hourly-hour"></div>
+                <div class="hourly-temp"></div><img class="hourly-icon">
+                <div class="hourly-humidity"></div>
+            </div>
+            <div class="hourly-forecast">
+                <div class="hourly-hour"></div>
+                <div class="hourly-temp"></div><img class="hourly-icon">
+                <div class="hourly-humidity"></div>
+            </div>
+            <div class="hourly-forecast">
+                <div class="hourly-hour"></div>
+                <div class="hourly-temp"></div><img class="hourly-icon">
+                <div class="hourly-humidity"></div>
+            </div>
+            <div class="hourly-forecast">
+                <div class="hourly-hour"></div>
+                <div class="hourly-temp"></div><img class="hourly-icon">
+                <div class="hourly-humidity"></div>
+            </div>
+            <div class="hourly-forecast">
+                <div class="hourly-hour"></div>
+                <div class="hourly-temp"></div><img class="hourly-icon">
+                <div class="hourly-humidity"></div>
+            </div>
+            <div class="hourly-forecast">
+                <div class="hourly-hour"></div>
+                <div class="hourly-temp"></div><img class="hourly-icon">
+                <div class="hourly-humidity"></div>
+            </div>
+            <div class="hourly-forecast">
+                <div class="hourly-hour"></div>
+                <div class="hourly-temp"></div><img class="hourly-icon">
+                <div class="hourly-humidity"></div>
+            </div>
+            <div class="hourly-forecast">
+                <div class="hourly-hour"></div>
+                <div class="hourly-temp"></div><img class="hourly-icon">
+                <div class="hourly-humidity"></div>
+            </div>
+            <div class="hourly-forecast">
+                <div class="hourly-hour"></div>
+                <div class="hourly-temp"></div><img class="hourly-icon">
+                <div class="hourly-humidity"></div>
+            </div>
+            <div class="hourly-forecast">
+                <div class="hourly-hour"></div>
+                <div class="hourly-temp"></div><img class="hourly-icon">
+                <div class="hourly-humidity"></div>
+            </div>
         </div>
 
         <div class="card daily-forecasts">
-            <div class="daily-forecast"><span></span><span><img><span></span><span><span></span><span></span></span></span></div>
-            <div class="daily-forecast"><span></span><span><img><span></span><span><span></span><span></span></span></span></div>
-            <div class="daily-forecast"><span></span><span><img><span></span><span><span></span><span></span></span></span></div>
-            <div class="daily-forecast"><span></span><span><img><span></span><span><span></span><span></span></span></span></div>
-            <div class="daily-forecast"><span></span><span><img><span></span><span><span></span><span></span></span></span></div>
-            <div class="daily-forecast"><span></span><span><img><span></span><span><span></span><span></span></span></span></div>
-            <div class="daily-forecast"><span></span><span><img><span></span><span><span></span><span></span></span></span></div>
-            <div class="daily-forecast"><span></span><span><img><span></span><span><span></span><span></span></span></span></div>
-            <div class="daily-forecast"><span></span><span><img><span></span><span><span></span><span></span></span></span></div>
-            <div class="daily-forecast"><span></span><span><img><span></span><span><span></span><span></span></span></span></div>
-            <div class="daily-forecast"><span></span><span><img><span></span><span><span></span><span></span></span></span></div>
-            <div class="daily-forecast"><span></span><span><img><span></span><span><span></span><span></span></span></span></div>
-            <div class="daily-forecast"><span></span><span><img><span></span><span><span></span><span></span></span></span></div>
-            <div class="daily-forecast"><span></span><span><img><span></span><span><span></span><span></span></span></span></div>
+            <div class="daily-forecast">
+                <span></span><span><img><span></span><span><span></span><span></span></span></span></div>
+            <div class="daily-forecast">
+                <span></span><span><img><span></span><span><span></span><span></span></span></span></div>
+            <div class="daily-forecast">
+                <span></span><span><img><span></span><span><span></span><span></span></span></span></div>
+            <div class="daily-forecast">
+                <span></span><span><img><span></span><span><span></span><span></span></span></span></div>
+            <div class="daily-forecast">
+                <span></span><span><img><span></span><span><span></span><span></span></span></span></div>
+            <div class="daily-forecast">
+                <span></span><span><img><span></span><span><span></span><span></span></span></span></div>
+            <div class="daily-forecast">
+                <span></span><span><img><span></span><span><span></span><span></span></span></span></div>
+            <div class="daily-forecast">
+                <span></span><span><img><span></span><span><span></span><span></span></span></span></div>
+            <div class="daily-forecast">
+                <span></span><span><img><span></span><span><span></span><span></span></span></span></div>
+            <div class="daily-forecast">
+                <span></span><span><img><span></span><span><span></span><span></span></span></span></div>
+            <div class="daily-forecast">
+                <span></span><span><img><span></span><span><span></span><span></span></span></span></div>
+            <div class="daily-forecast">
+                <span></span><span><img><span></span><span><span></span><span></span></span></span></div>
+            <div class="daily-forecast">
+                <span></span><span><img><span></span><span><span></span><span></span></span></span></div>
+            <div class="daily-forecast">
+                <span></span><span><img><span></span><span><span></span><span></span></span></span></div>
         </div>
     </div>
 </body>

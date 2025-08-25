@@ -81,7 +81,17 @@ const weatherFetcher = (function () {
 const displayController = (function (doc) {
   const loadSearchedLocation = async function (event) {
     event.preventDefault();
-    const result = await weatherFetcher.today(doc.querySelector("#location").value);
+    doc.querySelector(".body").classList.add("hidden");
+    doc.querySelector(".loading").classList.remove("hidden");
+    let result;
+    try {
+      result = await weatherFetcher.today(doc.querySelector("#location").value);
+    }
+    catch {
+      doc.querySelector(".body").classList.add("hidden");
+      doc.querySelector(".loading").classList.add("hidden");
+      return;
+    }
     console.log(result);
     const hours = [];
     const date = new Date;
@@ -138,6 +148,7 @@ const displayController = (function (doc) {
         .then((result) => { doc.querySelector(`.daily-forecast:nth-child(${i}) img`).src = result.default; });
     }
 
+    doc.querySelector(".loading").classList.add("hidden");
     doc.querySelector(".body").classList.remove("hidden");
   };
 
