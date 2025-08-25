@@ -38,6 +38,18 @@ const displayController = (function (doc) {
     doc.querySelector(".high").textContent = `${days[0]["tempmax"]}°`;
     doc.querySelector(".low").textContent = `${days[0]["tempmin"]}°`;
 
+    doc.querySelector(".feelslike div:last-child").textContent = `${days[0]["feelslike"]}°`;
+    doc.querySelector(".sunrise span:last-child").textContent = `${days[0]["sunrise"]}°`;
+    doc.querySelector(".sunset span:last-child").textContent = `${days[0]["sunset"]}°`;
+    doc.querySelector(".today-body-high-and-low span:last-child").textContent = `${days[0]["tempmax"]}°/${days[0]["tempmax"]}°`;
+    doc.querySelector(".wind span:last-child").textContent = `Dir: ${days[0]["winddir"]}, Vel: ${days[0]["windspeed"]}`;
+    doc.querySelector(".humidity span:last-child").textContent = `${days[0]["humidity"]}%`;
+    doc.querySelector(".dew-point span:last-child").textContent = `${days[0]["dew"]}°`;
+    doc.querySelector(".pressure span:last-child").textContent = `${days[0]["pressure"]}`;
+    doc.querySelector(".uv-index span:last-child").textContent = `${days[0]["uvindex"]}`;
+    doc.querySelector(".visibility span:last-child").textContent = `${days[0]["visibility"]}`;
+    doc.querySelector(".moonphase span:last-child").textContent = `${days[0]["moonphase"]}`;
+
     import(`./icons/${result["days"][0]["icon"]}.png`)
       .then((result) => { doc.querySelector(".icon").src = result.default; });
 
