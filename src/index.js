@@ -31,7 +31,12 @@ const displayController = (function (doc) {
       hours.push(result["days"][thisHour < 24 ? 0 : 1]["hours"][thisHour < 24 ? thisHour : thisHour - 24]);
     }
     const days = result["days"];
-    doc.querySelector(".body").innerHTML = ``;
+
+    doc.querySelector(".address").textContent = result["resolvedAddress"];
+    doc.querySelector(".temp").textContent = `${days[0]["temp"]}°`;
+    doc.querySelector(".conditions").textContent = days[0]["conditions"];
+    doc.querySelector(".high").textContent = `${days[0]["tempmax"]}°`;
+    doc.querySelector(".low").textContent = `${days[0]["tempmin"]}°`;
 
     import(`./icons/${result["days"][0]["icon"]}.png`)
       .then((result) => { doc.querySelector(".icon").src = result.default; });
@@ -45,6 +50,8 @@ const displayController = (function (doc) {
       import(`./icons/${days[i]["icon"]}.png`)
         .then((result) => { doc.querySelector(`.daily-forecast:nth-child(${i}) img`).src = result.default; });
     }
+
+    doc.querySelector(".body").classList.remove("hidden");
   }
 
   doc.querySelector("form button").addEventListener("click", loadSearchedLocation);
