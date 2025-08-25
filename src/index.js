@@ -38,7 +38,9 @@ const unitHelper = (function () {
     return allUnits[currentUnitSystem][quantity];
   };
 
-  return { changeUnits, units };
+  const currentUnits = function () { return currentUnitSystem; };
+
+  return { changeUnits, units, currentUnits };
 })();
 
 const weatherFetcher = (function () {
@@ -47,7 +49,7 @@ const weatherFetcher = (function () {
   };
 
   const today = function (location) {
-    return fetch(mainUrl(location, "metric", "", "datetime%2Ctempmax%2Ctempmin%2Ctemp%2Cfeelslike%2Cdew%2Chumidity%2Cprecipprob%2Cwindspeed%2Cwinddir%2Cpressure%2Ccloudcover%2Cvisibility%2Cuvindex%2Csunrise%2Csunset%2Cmoonphase%2Cconditions%2Cdescription%2Cicon", "hours"), { mode: "cors" })
+    return fetch(mainUrl(location, unitHelper.currentUnits(), "", "datetime%2Ctempmax%2Ctempmin%2Ctemp%2Cfeelslike%2Cdew%2Chumidity%2Cprecipprob%2Cwindspeed%2Cwinddir%2Cpressure%2Ccloudcover%2Cvisibility%2Cuvindex%2Csunrise%2Csunset%2Cmoonphase%2Cconditions%2Cdescription%2Cicon", "hours"), { mode: "cors" })
       .then(function (response) { return response.json(); })
       .then(function (response) { return response; });
   };
@@ -113,6 +115,16 @@ const displayController = (function (doc) {
 
     doc.querySelector(".body").classList.remove("hidden");
   };
+
+  doc.querySelectorAll(".unit-button").forEach(
+    (i) => {
+      i.addEventListener("click", () => {
+        unitHelper.changeUnits(i.textContent.toLowerCase());
+        doc.querySelector(".current-units-button").classList.remove("current-units-button");
+        i.classList.add("current-units-button");
+      });
+    }
+  );
 
   doc.querySelector("form button").addEventListener("click", loadSearchedLocation);
 
