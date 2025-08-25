@@ -97,10 +97,17 @@ body {
     padding: 5px;
     background-color: whitesmoke;
     border-radius: 1em;
+    align-items: center;
+    font-size: 1.5em;
+}
+
+.daily-forecast>span:first-child {
+    padding: 10px;
 }
 
 .daily-forecast>span:last-child {
     display: flex;
     justify-content: space-between;
-    width: 35%;
+    width: 50%;
+    align-items: center;
 }
