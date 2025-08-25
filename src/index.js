@@ -62,6 +62,10 @@ const displayController = (function (doc) {
     }
 
     for (let i = 1; i <= 14; ++i) {
+      doc.querySelector(`.daily-forecast:nth-child(${i}) span:first-child`).textContent = days[i]["datetime"].slice(5);
+      doc.querySelector(`.daily-forecast:nth-child(${i}) span:last-child span:nth-child(2)`).textContent = `${Math.round(days[i]["humidity"])}%`;
+      doc.querySelector(`.daily-forecast:nth-child(${i}) span:last-child span:last-child span:first-child`).textContent = `${Math.round(days[i]["tempmax"])}°`;
+      doc.querySelector(`.daily-forecast:nth-child(${i}) span:last-child span:last-child span:last-child`).textContent = `${Math.round(days[i]["tempmin"])}°`;
       import(`./icons/${days[i]["icon"]}.png`)
         .then((result) => { doc.querySelector(`.daily-forecast:nth-child(${i}) img`).src = result.default; });
     }
