@@ -156,7 +156,7 @@ input[type="search"] {
 }
 
 .daily-forecast>span:last-child>span:last-child {
-    width: 35%;
+    width: 45%;
     display: flex;
     justify-content: space-between;
 }
