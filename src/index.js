@@ -102,145 +102,145 @@ const displayController = (function (doc) {
       <div class="hourly-forecast">
         <div class="hourly-hour">${hours[0]["datetime"].slice(0, 5)}</div>
         <div class="hourly-temp">${Math.round(Number(hours[0]["temp"]))}°</div>
-        <img class="hourly-icon"></img>
+        <img class="hourly-icon" alt="${hours[0]["conditions"]}"></img>
         <div class="hourly-humidity">${Math.round(Number(hours[0]["humidity"]))}%</div>
       </div>
       <div class="hourly-forecast">
         <div class="hourly-hour">${hours[1]["datetime"].slice(0, 5)}</div>
         <div class="hourly-temp">${Math.round(Number(hours[1]["temp"]))}°</div>
-        <img class="hourly-icon"></img>
+        <img class="hourly-icon" alt="${hours[1]["conditions"]}"></img>
         <div class="hourly-humidity">${Math.round(Number(hours[1]["humidity"]))}%</div>
       </div>
       <div class="hourly-forecast">
         <div class="hourly-hour">${hours[2]["datetime"].slice(0, 5)}</div>
         <div class="hourly-temp">${Math.round(Number(hours[2]["temp"]))}°</div>
-        <img class="hourly-icon"></img>
+        <img class="hourly-icon" alt="${hours[2]["conditions"]}"></img>
         <div class="hourly-humidity">${Math.round(Number(hours[2]["humidity"]))}%</div>
       </div>
       <div class="hourly-forecast">
         <div class="hourly-hour">${hours[3]["datetime"].slice(0, 5)}</div>
         <div class="hourly-temp">${Math.round(Number(hours[3]["temp"]))}°</div>
-        <img class="hourly-icon"></img>
+        <img class="hourly-icon" alt="${hours[3]["conditions"]}"></img>
         <div class="hourly-humidity">${Math.round(Number(hours[3]["humidity"]))}%</div>
       </div>
       <div class="hourly-forecast">
         <div class="hourly-hour">${hours[4]["datetime"].slice(0, 5)}</div>
         <div class="hourly-temp">${Math.round(Number(hours[4]["temp"]))}°</div>
-        <img class="hourly-icon"></img>
+        <img class="hourly-icon" alt="${hours[4]["conditions"]}"></img>
         <div class="hourly-humidity">${Math.round(Number(hours[4]["humidity"]))}%</div>
       </div>
       <div class="hourly-forecast">
         <div class="hourly-hour">${hours[5]["datetime"].slice(0, 5)}</div>
         <div class="hourly-temp">${Math.round(Number(hours[5]["temp"]))}°</div>
-        <img class="hourly-icon"></img>
+        <img class="hourly-icon" alt="${hours[5]["conditions"]}"></img>
         <div class="hourly-humidity">${Math.round(Number(hours[5]["humidity"]))}%</div>
       </div>
       <div class="hourly-forecast">
         <div class="hourly-hour">${hours[6]["datetime"].slice(0, 5)}</div>
         <div class="hourly-temp">${Math.round(Number(hours[6]["temp"]))}°</div>
-        <img class="hourly-icon"></img>
+        <img class="hourly-icon" alt="${hours[6]["conditions"]}"></img>
         <div class="hourly-humidity">${Math.round(Number(hours[6]["humidity"]))}%</div>
       </div>
       <div class="hourly-forecast">
         <div class="hourly-hour">${hours[7]["datetime"].slice(0, 5)}</div>
         <div class="hourly-temp">${Math.round(Number(hours[7]["temp"]))}°</div>
-        <img class="hourly-icon"></img>
+        <img class="hourly-icon" alt="${hours[7]["conditions"]}"></img>
         <div class="hourly-humidity">${Math.round(Number(hours[7]["humidity"]))}%</div>
       </div>
       <div class="hourly-forecast">
         <div class="hourly-hour">${hours[8]["datetime"].slice(0, 5)}</div>
         <div class="hourly-temp">${Math.round(Number(hours[8]["temp"]))}°</div>
-        <img class="hourly-icon"></img>
+        <img class="hourly-icon" alt="${hours[8]["conditions"]}"></img>
         <div class="hourly-humidity">${Math.round(Number(hours[8]["humidity"]))}%</div>
       </div>
       <div class="hourly-forecast">
         <div class="hourly-hour">${hours[9]["datetime"].slice(0, 5)}</div>
         <div class="hourly-temp">${Math.round(Number(hours[9]["temp"]))}°</div>
-        <img class="hourly-icon"></img>
+        <img class="hourly-icon" alt="${hours[9]["conditions"]}"></img>
         <div class="hourly-humidity">${Math.round(Number(hours[9]["humidity"]))}%</div>
       </div>
       <div class="hourly-forecast">
         <div class="hourly-hour">${hours[10]["datetime"].slice(0, 5)}</div>
         <div class="hourly-temp">${Math.round(Number(hours[10]["temp"]))}°</div>
-        <img class="hourly-icon"></img>
+        <img class="hourly-icon" alt="${hours[10]["conditions"]}"></img>
         <div class="hourly-humidity">${Math.round(Number(hours[10]["humidity"]))}%</div>
       </div>
       <div class="hourly-forecast">
         <div class="hourly-hour">${hours[11]["datetime"].slice(0, 5)}</div>
         <div class="hourly-temp">${Math.round(Number(hours[11]["temp"]))}°</div>
-        <img class="hourly-icon"></img>
+        <img class="hourly-icon" alt="${hours[11]["conditions"]}"></img>
         <div class="hourly-humidity">${Math.round(Number(hours[11]["humidity"]))}%</div>
       </div>
       <div class="hourly-forecast">
         <div class="hourly-hour">${hours[12]["datetime"].slice(0, 5)}</div>
         <div class="hourly-temp">${Math.round(Number(hours[12]["temp"]))}°</div>
-        <img class="hourly-icon"></img>
+        <img class="hourly-icon" alt="${hours[12]["conditions"]}"></img>
         <div class="hourly-humidity">${Math.round(Number(hours[12]["humidity"]))}%</div>
       </div>
       <div class="hourly-forecast">
         <div class="hourly-hour">${hours[13]["datetime"].slice(0, 5)}</div>
         <div class="hourly-temp">${Math.round(Number(hours[13]["temp"]))}°</div>
-        <img class="hourly-icon"></img>
+        <img class="hourly-icon" alt="${hours[13]["conditions"]}"></img>
         <div class="hourly-humidity">${Math.round(Number(hours[13]["humidity"]))}%</div>
       </div>
       <div class="hourly-forecast">
         <div class="hourly-hour">${hours[14]["datetime"].slice(0, 5)}</div>
         <div class="hourly-temp">${Math.round(Number(hours[14]["temp"]))}°</div>
-        <img class="hourly-icon"></img>
+        <img class="hourly-icon" alt="${hours[14]["conditions"]}"></img>
         <div class="hourly-humidity">${Math.round(Number(hours[14]["humidity"]))}%</div>
       </div>
       <div class="hourly-forecast">
         <div class="hourly-hour">${hours[15]["datetime"].slice(0, 5)}</div>
         <div class="hourly-temp">${Math.round(Number(hours[15]["temp"]))}°</div>
-        <img class="hourly-icon"></img>
+        <img class="hourly-icon" alt="${hours[15]["conditions"]}"></img>
         <div class="hourly-humidity">${Math.round(Number(hours[15]["humidity"]))}%</div>
       </div>
       <div class="hourly-forecast">
         <div class="hourly-hour">${hours[16]["datetime"].slice(0, 5)}</div>
         <div class="hourly-temp">${Math.round(Number(hours[16]["temp"]))}°</div>
-        <img class="hourly-icon"></img>
+        <img class="hourly-icon" alt="${hours[16]["conditions"]}"></img>
         <div class="hourly-humidity">${Math.round(Number(hours[16]["humidity"]))}%</div>
       </div>
       <div class="hourly-forecast">
         <div class="hourly-hour">${hours[17]["datetime"].slice(0, 5)}</div>
         <div class="hourly-temp">${Math.round(Number(hours[17]["temp"]))}°</div>
-        <img class="hourly-icon"></img>
+        <img class="hourly-icon" alt="${hours[17]["conditions"]}"></img>
         <div class="hourly-humidity">${Math.round(Number(hours[17]["humidity"]))}%</div>
       </div>
       <div class="hourly-forecast">
         <div class="hourly-hour">${hours[18]["datetime"].slice(0, 5)}</div>
         <div class="hourly-temp">${Math.round(Number(hours[18]["temp"]))}°</div>
-        <img class="hourly-icon"></img>
+        <img class="hourly-icon" alt="${hours[18]["conditions"]}"></img>
         <div class="hourly-humidity">${Math.round(Number(hours[18]["humidity"]))}%</div>
       </div>
       <div class="hourly-forecast">
         <div class="hourly-hour">${hours[19]["datetime"].slice(0, 5)}</div>
         <div class="hourly-temp">${Math.round(Number(hours[19]["temp"]))}°</div>
-        <img class="hourly-icon"></img>
+        <img class="hourly-icon" alt="${hours[19]["conditions"]}"></img>
         <div class="hourly-humidity">${Math.round(Number(hours[19]["humidity"]))}%</div>
       </div>
       <div class="hourly-forecast">
         <div class="hourly-hour">${hours[20]["datetime"].slice(0, 5)}</div>
         <div class="hourly-temp">${Math.round(Number(hours[20]["temp"]))}°</div>
-        <img class="hourly-icon"></img>
+        <img class="hourly-icon" alt="${hours[20]["conditions"]}"></img>
         <div class="hourly-humidity">${Math.round(Number(hours[20]["humidity"]))}%</div>
       </div>
       <div class="hourly-forecast">
         <div class="hourly-hour">${hours[21]["datetime"].slice(0, 5)}</div>
         <div class="hourly-temp">${Math.round(Number(hours[21]["temp"]))}°</div>
-        <img class="hourly-icon"></img>
+        <img class="hourly-icon" alt="${hours[21]["conditions"]}"></img>
         <div class="hourly-humidity">${Math.round(Number(hours[21]["humidity"]))}%</div>
       </div>
       <div class="hourly-forecast">
         <div class="hourly-hour">${hours[22]["datetime"].slice(0, 5)}</div>
         <div class="hourly-temp">${Math.round(Number(hours[22]["temp"]))}°</div>
-        <img class="hourly-icon"></img>
+        <img class="hourly-icon" alt="${hours[22]["conditions"]}"></img>
         <div class="hourly-humidity">${Math.round(Number(hours[22]["humidity"]))}%</div>
       </div>
       <div class="hourly-forecast">
         <div class="hourly-hour">${hours[23]["datetime"].slice(0, 5)}</div>
         <div class="hourly-temp">${Math.round(Number(hours[23]["temp"]))}°</div>
-        <img class="hourly-icon"></img>
+        <img class="hourly-icon" alt="${hours[23]["conditions"]}"></img>
         <div class="hourly-humidity">${Math.round(Number(hours[23]["humidity"]))}%</div>
       </div>
     </div>`;
