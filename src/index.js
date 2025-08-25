@@ -54,6 +54,9 @@ const displayController = (function (doc) {
       .then((result) => { doc.querySelector(".icon").src = result.default; });
 
     for (let i = 0; i < 24; ++i) {
+      doc.querySelector(`.hourly-forecast:nth-child(${i + 1}) .hourly-hour`).textContent = hours[i]["datetime"].slice(0, 5);
+      doc.querySelector(`.hourly-forecast:nth-child(${i + 1}) .hourly-temp`).textContent = `${Math.round(hours[i]["temp"])}°`;
+      doc.querySelector(`.hourly-forecast:nth-child(${i + 1}) .hourly-humidity`).textContent = `${Math.round(hours[i]["humidity"])}%`;
       import(`./icons/${hours[i]["icon"]}.png`)
         .then((result) => { doc.querySelector(`.hourly-forecast:nth-child(${i + 1}) .hourly-icon`).src = result.default; });
     }
