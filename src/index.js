@@ -40,7 +40,28 @@ const unitHelper = (function () {
 
   const currentUnits = function () { return currentUnitSystem; };
 
-  return { changeUnits, units, currentUnits };
+  const moonphase = function (moonphase) {
+    if (moonphase == 0)
+      return "🌑 New moon";
+    else if (moonphase < 0.25)
+      return "🌒︎ Waxing crescent";
+    else if (moonphase == 0.25)
+      return "🌓︎ First quarter";
+    else if (moonphase < 0.5)
+      return "🌔︎ Waxing gibbous";
+    else if (moonphase == 0.5)
+      return "🌕︎ Full moon";
+    else if (moonphase < 0.75)
+      return "🌖︎ Waning gibbous";
+    else if (moonphase == 0.75)
+      return "🌗︎ Last quarter";
+    else if (moonphase <= 1)
+      return "🌘︎ Waning crescent";
+    else
+      return "Unknown";
+  };
+
+  return { changeUnits, units, currentUnits, moonphase };
 })();
 
 const weatherFetcher = (function () {
@@ -95,7 +116,7 @@ const displayController = (function (doc) {
     doc.querySelector(".pressure span:last-child").textContent = `${now["pressure"]} ${unitHelper.units("pressure")}`;
     doc.querySelector(".uv-index span:last-child").textContent = `${now["uvindex"]}`;
     doc.querySelector(".visibility span:last-child").textContent = `${now["visibility"]} ${unitHelper.units("distance")}`;
-    doc.querySelector(".moonphase span:last-child").textContent = `${days[0]["moonphase"]}`;
+    doc.querySelector(".moonphase span:last-child").textContent = unitHelper.moonphase(days[0]["moonphase"]);
 
     import(`./icons/${now["icon"]}.png`)
       .then((result) => { doc.querySelector(".icon").src = result.default; });
