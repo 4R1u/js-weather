@@ -23,10 +23,11 @@ const displayController = (function (doc) {
         const date = new Date;
         const currentHour = date.getHours();
         const currentOffset = date.getTimezoneOffset() / 60;
-        for (let i = 0; i < 24; ++i) {
+        for (let i = 1; i <= 24; ++i) {
+            // ^--- next 24 hours, starting with the next one instead of the current one
+            // v--- converts to the current hour in the timezone of requested location instead of yours
             let thisHour = currentHour + i + currentOffset + result["tzoffset"];
             if (thisHour < 0) thisHour += 24;
-            console.log(`${currentHour} + ${i} + ${currentOffset} + ${result["tzoffset"]} = ${thisHour}`);
             hours.push(result["days"][thisHour < 24 ? 0 : 1]["hours"][thisHour < 24 ? thisHour : thisHour - 24]);
         }
         doc.querySelector(".body").innerHTML = `
