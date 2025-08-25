@@ -6,7 +6,7 @@ const weatherFetcher = (function () {
   };
 
   const today = function (location) {
-    return fetch(mainUrl(location, "metric", "/next24hours", "datetime%2Ctempmax%2Ctempmin%2Ctemp%2Cfeelslike%2Cdew%2Chumidity%2Cprecipprob%2Cwindspeed%2Cwinddir%2Cpressure%2Ccloudcover%2Cvisibility%2Cuvindex%2Csunrise%2Csunset%2Cmoonphase%2Cconditions%2Cdescription%2Cicon", "hours"), { mode: "cors" })
+    return fetch(mainUrl(location, "metric", "", "datetime%2Ctempmax%2Ctempmin%2Ctemp%2Cfeelslike%2Cdew%2Chumidity%2Cprecipprob%2Cwindspeed%2Cwinddir%2Cpressure%2Ccloudcover%2Cvisibility%2Cuvindex%2Csunrise%2Csunset%2Cmoonphase%2Cconditions%2Cdescription%2Cicon", "hours"), { mode: "cors" })
       .then(function (response) { return response.json(); })
       .then(function (response) { return response; });
   };
@@ -30,6 +30,7 @@ const displayController = (function (doc) {
       if (thisHour < 0) thisHour += 24;
       hours.push(result["days"][thisHour < 24 ? 0 : 1]["hours"][thisHour < 24 ? thisHour : thisHour - 24]);
     }
+    const days = result["days"];
     doc.querySelector(".body").innerHTML = `
     <div class="card today-header">
       <div class="address">${result["resolvedAddress"]}</div>
@@ -243,6 +244,23 @@ const displayController = (function (doc) {
         <img class="hourly-icon" alt="${hours[23]["conditions"]}"></img>
         <div class="hourly-humidity">${Math.round(Number(hours[23]["humidity"]))}%</div>
       </div>
+    </div>
+    
+    <div class="card daily-forecasts">
+      <div class="daily-forecast"><span>${days[1]["datetime"].slice(5)}</span><span><span>${Math.round(days[1]["humidity"])}%</span><span>${Math.round(Math.round(days[1]["tempmax"]))}°</span><span>${Math.round(days[1]["tempmin"])}°</span></span></div>
+      <div class="daily-forecast"><span>${days[2]["datetime"].slice(5)}</span><span><span>${Math.round(days[2]["humidity"])}%</span><span>${Math.round(Math.round(days[2]["tempmax"]))}°</span><span>${Math.round(days[2]["tempmin"])}°</span></span></div>
+      <div class="daily-forecast"><span>${days[3]["datetime"].slice(5)}</span><span><span>${Math.round(days[3]["humidity"])}%</span><span>${Math.round(Math.round(days[3]["tempmax"]))}°</span><span>${Math.round(days[3]["tempmin"])}°</span></span></div>
+      <div class="daily-forecast"><span>${days[4]["datetime"].slice(5)}</span><span><span>${Math.round(days[4]["humidity"])}%</span><span>${Math.round(Math.round(days[4]["tempmax"]))}°</span><span>${Math.round(days[4]["tempmin"])}°</span></span></div>
+      <div class="daily-forecast"><span>${days[5]["datetime"].slice(5)}</span><span><span>${Math.round(days[5]["humidity"])}%</span><span>${Math.round(Math.round(days[5]["tempmax"]))}°</span><span>${Math.round(days[5]["tempmin"])}°</span></span></div>
+      <div class="daily-forecast"><span>${days[6]["datetime"].slice(5)}</span><span><span>${Math.round(days[6]["humidity"])}%</span><span>${Math.round(Math.round(days[6]["tempmax"]))}°</span><span>${Math.round(days[6]["tempmin"])}°</span></span></div>
+      <div class="daily-forecast"><span>${days[7]["datetime"].slice(5)}</span><span><span>${Math.round(days[7]["humidity"])}%</span><span>${Math.round(Math.round(days[7]["tempmax"]))}°</span><span>${Math.round(days[7]["tempmin"])}°</span></span></div>
+      <div class="daily-forecast"><span>${days[8]["datetime"].slice(5)}</span><span><span>${Math.round(days[8]["humidity"])}%</span><span>${Math.round(Math.round(days[8]["tempmax"]))}°</span><span>${Math.round(days[8]["tempmin"])}°</span></span></div>
+      <div class="daily-forecast"><span>${days[9]["datetime"].slice(5)}</span><span><span>${Math.round(days[9]["humidity"])}%</span><span>${Math.round(Math.round(days[9]["tempmax"]))}°</span><span>${Math.round(days[9]["tempmin"])}°</span></span></div>
+      <div class="daily-forecast"><span>${days[10]["datetime"].slice(5)}</span><span><span>${Math.round(days[10]["humidity"])}%</span><span>${Math.round(Math.round(days[10]["tempmax"]))}°</span><span>${Math.round(days[10]["tempmin"])}°</span></span></div>
+      <div class="daily-forecast"><span>${days[11]["datetime"].slice(5)}</span><span><span>${Math.round(days[11]["humidity"])}%</span><span>${Math.round(Math.round(days[11]["tempmax"]))}°</span><span>${Math.round(days[11]["tempmin"])}°</span></span></div>
+      <div class="daily-forecast"><span>${days[12]["datetime"].slice(5)}</span><span><span>${Math.round(days[12]["humidity"])}%</span><span>${Math.round(Math.round(days[12]["tempmax"]))}°</span><span>${Math.round(days[12]["tempmin"])}°</span></span></div>
+      <div class="daily-forecast"><span>${days[13]["datetime"].slice(5)}</span><span><span>${Math.round(days[13]["humidity"])}%</span><span>${Math.round(Math.round(days[13]["tempmax"]))}°</span><span>${Math.round(days[13]["tempmin"])}°</span></span></div>
+      <div class="daily-forecast"><span>${days[14]["datetime"].slice(5)}</span><span><span>${Math.round(days[14]["humidity"])}%</span><span>${Math.round(Math.round(days[14]["tempmax"]))}°</span><span>${Math.round(days[14]["tempmin"])}°</span></span></div>
     </div>`;
 
     import(`./icons/${result["days"][0]["icon"]}.png`)
