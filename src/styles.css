@@ -108,6 +108,16 @@ body {
 .daily-forecast>span:last-child {
     display: flex;
     justify-content: space-between;
-    width: 50%;
+    width: 40%;
     align-items: center;
+}
+
+.daily-forecast>span:last-child>span:last-child {
+    width: 35%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.daily-forecast>span:last-child>span:nth-child(2) {
+    font-size: 0.75em;
 }
