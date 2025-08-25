@@ -24,7 +24,9 @@ const displayController = (function (doc) {
         const currentHour = date.getHours();
         const currentOffset = date.getTimezoneOffset() / 60;
         for (let i = 0; i < 24; ++i) {
-            const thisHour = currentHour + i + currentOffset + result["tzoffset"];
+            let thisHour = currentHour + i + currentOffset + result["tzoffset"];
+            if (thisHour < 0) thisHour += 24;
+            console.log(`${currentHour} + ${i} + ${currentOffset} + ${result["tzoffset"]} = ${thisHour}`);
             hours.push(result["days"][thisHour < 24 ? 0 : 1]["hours"][thisHour < 24 ? thisHour : thisHour - 24]);
         }
         doc.querySelector(".body").innerHTML = `
