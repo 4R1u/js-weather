@@ -74,26 +74,30 @@ const displayController = (function (doc) {
       hours.push(result["days"][thisHour < 24 ? 0 : 1]["hours"][thisHour < 24 ? thisHour : thisHour - 24]);
     }
     const days = result["days"];
+    let thisHour = [currentHour + currentOffset + result["tzoffset"]];
+    if (thisHour < 0) thisHour += 24;
+    const now = days[0]["hours"][thisHour];
 
     doc.querySelector(".address").textContent = result["resolvedAddress"];
-    doc.querySelector(".temp").textContent = `${days[0]["temp"]} ${unitHelper.units("temp")}`;
-    doc.querySelector(".conditions").textContent = days[0]["conditions"];
+    doc.querySelector(".temp").textContent = `${now["temp"]} ${unitHelper.units("temp")}`;
+    doc.querySelector(".conditions").textContent = now["conditions"];
     doc.querySelector(".high").textContent = `${days[0]["tempmax"]} ${unitHelper.units("temp")}`;
     doc.querySelector(".low").textContent = `${days[0]["tempmin"]} ${unitHelper.units("temp")}`;
 
-    doc.querySelector(".feelslike div:last-child").textContent = `${days[0]["feelslike"]} ${unitHelper.units("temp")}`;
+    doc.querySelector(".feelslike div:last-child").textContent = `${now["feelslike"]} ${unitHelper.units("temp")}`;
     doc.querySelector(".sunrise span:last-child").textContent = `${days[0]["sunrise"]}`;
     doc.querySelector(".sunset span:last-child").textContent = `${days[0]["sunset"]}`;
     doc.querySelector(".today-body-high-and-low span:last-child").textContent = `${days[0]["tempmax"]} ${unitHelper.units("temp")}/${days[0]["tempmax"]} ${unitHelper.units("temp")}`;
-    doc.querySelector(".wind span:last-child").textContent = `Dir: ${days[0]["winddir"]}, Vel: ${days[0]["windspeed"]} ${unitHelper.units("speed")}`;
-    doc.querySelector(".humidity span:last-child").textContent = `${days[0]["humidity"]}%`;
-    doc.querySelector(".dew-point span:last-child").textContent = `${days[0]["dew"]} ${unitHelper.units("temp")}`;
-    doc.querySelector(".pressure span:last-child").textContent = `${days[0]["pressure"]} ${unitHelper.units("pressure")}`;
-    doc.querySelector(".uv-index span:last-child").textContent = `${days[0]["uvindex"]}`;
-    doc.querySelector(".visibility span:last-child").textContent = `${days[0]["visibility"]} ${unitHelper.units("distance")}`;
+    doc.querySelector(".windspeed").textContent = `${now["windspeed"]} ${unitHelper.units("speed")}`;
+    doc.querySelector(".winddir").style = `display: inline-block; transform: rotate(${now["winddir"]}deg);`;
+    doc.querySelector(".humidity span:last-child").textContent = `${now["humidity"]}%`;
+    doc.querySelector(".dew-point span:last-child").textContent = `${now["dew"]} ${unitHelper.units("temp")}`;
+    doc.querySelector(".pressure span:last-child").textContent = `${now["pressure"]} ${unitHelper.units("pressure")}`;
+    doc.querySelector(".uv-index span:last-child").textContent = `${now["uvindex"]}`;
+    doc.querySelector(".visibility span:last-child").textContent = `${now["visibility"]} ${unitHelper.units("distance")}`;
     doc.querySelector(".moonphase span:last-child").textContent = `${days[0]["moonphase"]}`;
 
-    import(`./icons/${result["days"][0]["icon"]}.png`)
+    import(`./icons/${now["icon"]}.png`)
       .then((result) => { doc.querySelector(".icon").src = result.default; });
 
     for (let i = 0; i < 24; ++i) {
